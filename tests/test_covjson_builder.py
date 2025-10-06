@@ -1,5 +1,6 @@
 from covjson_builder import convert_to_pointseries_covjson
 from read_csv import Weather_Data
+import pytest
 
 
 def test_convert_to_pointseries_covjson_creates_valid_structure():
@@ -23,3 +24,8 @@ def test_convert_to_pointseries_covjson_creates_valid_structure():
     assert temp_range["dataType"] == "float"
     assert temp_range["shape"] == [5]
     assert temp_range["values"] == [275.2, 275.5, 275.7, 275.7, 275.7]
+
+
+def test_builder_empty_rows_raises():
+    with pytest.raises(ValueError):
+        convert_to_pointseries_covjson([])

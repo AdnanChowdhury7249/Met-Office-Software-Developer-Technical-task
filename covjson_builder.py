@@ -3,6 +3,9 @@ from read_csv import Weather_Data
 
 
 def convert_to_pointseries_covjson(rows: List[Weather_Data]):
+    if not rows:
+        raise ValueError("NO data provided")
+
     temps = [r.temperature for r in rows]
     times = [r.time for r in rows]
     lon = rows[0].lon
