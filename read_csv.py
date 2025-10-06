@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 @dataclass
-class Sample:
+class Weather_Data:
     time: str
     lon: float
     lat: float
@@ -13,25 +13,24 @@ class Sample:
 
 
 def read_csv(filename: str):
-    # Resolve path in project root
     path = Path(__file__).parent / filename
 
     if not path.exists():
         raise FileNotFoundError(f" File not found: {path}")
 
-    samples = []
+    weather_data = []
     with open(path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            samples.append(
-                Sample(
+            weather_data.append(
+                Weather_Data(
                     time=row["time"],
                     lon=float(row["longitude"]),
                     lat=float(row["latitude"]),
                     temperature=str(row["temperature"]),
                 )
             )
-    return samples
+    return weather_data
 
 
 if __name__ == "__main__":
