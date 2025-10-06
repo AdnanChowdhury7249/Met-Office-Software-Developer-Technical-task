@@ -39,7 +39,13 @@ def convert_to_pointseries_covjson(rows: List[Weather_Data]):
                     "id": "http://vocab.nerc.ac.uk/standard_name/air_temperature/",
                     "label": {"en": "Air temperature"},
                 },
-                "unit": {"label": {"en": "kelvin"}, "symbol": {"value": "K"}},
+                "unit": {
+                    "label": {"en": "kelvin"},
+                    "symbol": {
+                        "value": "K",
+                        "type": "http://www.opengis.net/def/uom/UCUM/",
+                    },
+                },
             }
         },
         "ranges": {

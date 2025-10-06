@@ -9,7 +9,7 @@ class Weather_Data:
     time: str
     lon: float
     lat: float
-    temperature: str
+    temperature: float
 
 
 def read_csv(filename: str):
@@ -27,7 +27,7 @@ def read_csv(filename: str):
                     time=row["time"],
                     lon=float(row["longitude"]),
                     lat=float(row["latitude"]),
-                    temperature=str(row["temperature"]),
+                    temperature=float(row["temperature"]),
                 )
             )
     return weather_data
